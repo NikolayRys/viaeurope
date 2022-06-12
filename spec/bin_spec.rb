@@ -1,7 +1,6 @@
 require_relative 'spec_helper'
 require_relative '../lib/bin'
 
-
 describe Bin do
   let(:bin) { Bin.new }
   it 'is initialized with a default size' do
