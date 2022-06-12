@@ -17,7 +17,7 @@ describe BestFitDecreasing do
                       [[93, 6, 1, 0], [87, 10, 3], [59, 22, 15, 4], [81, 14, 5], [100], [91, 8], [58, 21, 20], [55, 43], [98], [96], [50]]]
 
   test_data_table.each do|values, bins|
-    it "distributes values into bins for #{values}" do
+    it "distributes set of #{values.size} values into bins" do
       expect(BestFitDecreasing.new(values, 100).distribute!).to eq(bins)
     end
   end
