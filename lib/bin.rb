@@ -30,6 +30,10 @@ class Bin
     free_space >= value
   end
 
+  def to_a
+    @content.sort
+  end
+
   private
 
   def recalculate_free_space
