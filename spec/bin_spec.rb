@@ -28,4 +28,8 @@ describe Bin do
     bin.add(2)
     expect(bin.total_values).to eq(2)
   end
+
+  it 'checks if value fits' do
+    expect(bin.fits?(5000)).to be_falsey
+  end
 end
