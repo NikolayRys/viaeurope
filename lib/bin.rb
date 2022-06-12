@@ -31,7 +31,7 @@ class Bin
   end
 
   def to_a
-    @content.sort
+    @content.sort.reverse!
   end
 
   private
