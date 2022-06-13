@@ -29,23 +29,19 @@ class LowerBound
       fitting_values, @values = @values.partition { |v| virtual_bins.last.fits?(v) }
 
       glued_value = fitting_values.sum || 0
-      glued_value = insert_glued_value(virtual_bins, glued_value)
+      kept_value  = [virtual_bins.last.free_space, glued_value].min
 
-      while glued_value > @size
-        virtual_bins << Bin.new(@size)
-        glued_value = insert_glued_value(virtual_bins, glued_value)
+      if kept_value.positive?
+        virtual_bins.last.add(kept_value)
+        glued_value -= kept_value
       end
 
-      @values << glued_value if glued_value > 0
+      glued_value -= @size while glued_value > @size
+
+      @values << glued_value if glued_value.positive?
     end
 
     virtual_bins.sum(&:free_space) || 0
-  end
-
-  def insert_glued_value(virtual_bins, glued_value)
-    stay_value = [virtual_bins.last.free_space, glued_value].min
-    virtual_bins.last.add(stay_value) if stay_value > 0
-    glued_value - stay_value
   end
 
 end
