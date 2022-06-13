@@ -1,5 +1,7 @@
 # Best-fit-decreasing (BFD) algorithm for heuristic search
 # https://en.wikipedia.org/wiki/Best-fit_bin_packing
+# Requires nlog(n) time.
+
 require_relative 'bin'
 
 class BestFitDecreasing
