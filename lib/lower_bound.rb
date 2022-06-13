@@ -18,30 +18,30 @@ class LowerBound
   private
 
   def get_estimated_waste
-    virtual_bins = []
+    wasted_space = 0
 
     while @values.any?
       value = @values.pop
 
-      virtual_bins << Bin.new(@size)
-      virtual_bins.last.add(value)
+      bin = Bin.new(@size)
+      bin.add(value)
 
-      fitting_values, @values = @values.partition { |v| virtual_bins.last.fits?(v) }
+      fitting_values, @values = @values.partition { |v| bin.fits?(v) }
 
       glued_value = fitting_values.sum || 0
-      kept_value  = [virtual_bins.last.free_space, glued_value].min
-
+      kept_value  = [bin.free_space, glued_value].min
       if kept_value.positive?
-        virtual_bins.last.add(kept_value)
+        bin.add(kept_value)
         glued_value -= kept_value
       end
-
       glued_value -= @size while glued_value > @size
+
+      wasted_space += bin.free_space
 
       @values << glued_value if glued_value.positive?
     end
 
-    virtual_bins.sum(&:free_space) || 0
+    wasted_space
   end
 
 end
