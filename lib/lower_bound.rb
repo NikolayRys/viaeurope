@@ -28,7 +28,7 @@ class LowerBound
 
       fitting_values, @values = @values.partition { |v| bin.fits?(v) }
 
-      glued_value = fitting_values.sum || 0
+      glued_value = fitting_values.sum
       kept_value  = [bin.free_space, glued_value].min
       if kept_value.positive?
         bin.add(kept_value)
@@ -37,7 +37,6 @@ class LowerBound
       glued_value -= @size while glued_value > @size
 
       wasted_space += bin.free_space
-
       @values << glued_value if glued_value.positive?
     end
 
