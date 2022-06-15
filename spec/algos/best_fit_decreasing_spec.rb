@@ -1,4 +1,4 @@
-require_relative 'spec_helper'
+require_relative '../spec_helper'
 require_relative '../../lib/algos/best_fit_decreasing'
 
 describe BestFitDecreasing do
@@ -24,12 +24,12 @@ describe BestFitDecreasing do
                       [[51, 48], [40, 26, 26], [9]], # BFD cannot find optimal solution for this case
                       100]
   test_data_table << [[1262, 1227, 1049, 961, 945, 667, 650, 621, 567, 567, 564, 560, 536, 419, 312],
-                      [[621, 564, 560, 536], [667, 650, 567, 419], [961, 945, 312], [1227, 1049], [1262]],
+                      [[1262, 1049], [621, 567, 567, 536], [945, 667, 650], [1227, 961], [564, 560, 419, 312]],
                       2311]
 
   test_data_table.each do|values, bins, size|
     it "distributes set of #{values.size} values into bins of #{size}" do
-      expect(BestFitDecreasing.new(values, 100).distribute!).to eq(bins)
+      expect(BestFitDecreasing.new(values, size).distribute!).to eq(bins)
     end
   end
 end

@@ -32,7 +32,7 @@ class BestFitDecreasing
   end
 
   def insert_into_new_bin(value)
-    bin = Bin.new(@size)
+    bin = Bin.new(size: @size)
     place_bin(bin, value)
   end
 
