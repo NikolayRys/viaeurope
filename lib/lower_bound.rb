@@ -8,7 +8,6 @@ class LowerBound
   def initialize(values, size=Bin::SIZE)
     @values = values.sort
     @size = size
-
   end
 
   def get_min_bins
@@ -25,7 +24,7 @@ class LowerBound
     while @values.any?
       value = @values.pop
 
-      bin = Bin.new(@size)
+      bin = Bin.new(size: @size)
       bin.add(value)
 
       fitting_values, @values = @values.partition { |v| bin.fits?(v) }
