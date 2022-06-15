@@ -32,4 +32,10 @@ describe Bin do
   it 'checks if value fits' do
     expect(bin.fits?(5000)).to be_falsey
   end
+
+  it 'mass assigns values' do
+    bin = Bin.new([1, 2, 3])
+    expect(bin.total_values).to eq(3)
+    expect(bin.free_space).to eq(Bin::SIZE - 6)
+  end
 end

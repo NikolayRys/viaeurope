@@ -1,9 +1,10 @@
 class Bin
   SIZE = 2311
 
-  def initialize(size=SIZE)
-    @content = []
+  def initialize(content=[], size=SIZE)
     @size = size
+    raise "Not enough space" if content.sum > @size
+    @content = content
   end
 
   def add(value)
