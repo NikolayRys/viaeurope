@@ -38,13 +38,13 @@ describe Bin do
 
   describe 'factory' do
     it 'mass assigns values' do
-      bin = Bin.build([1, 2, 3])
+      bin = Bin.build(values: [1, 2, 3])
       expect(bin.total_values).to eq(3)
       expect(bin.free_space).to eq(Bin::SIZE - 6)
     end
 
     it 'does not return bin if does not fit' do
-      expect(Bin.build([2000, 3000, 3])).to be_nil
+      expect(Bin.build(values: [2000, 3000, 3])).to be_nil
     end
   end
 end

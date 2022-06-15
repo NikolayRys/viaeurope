@@ -1,11 +1,12 @@
 class Bin
   SIZE = 2311
 
-  def self.build(values, size=SIZE)
-    values.sum <= @size ? new(values, size) : nil
+  def self.build(values:[], size: SIZE)
+    values_arr = Array(values)
+    values_arr.sum <= size ? new(values: values_arr, size: size) : nil
   end
 
-  def initialize(values=[], size=SIZE)
+  def initialize(values: [], size: SIZE)
     @size = size
     @content = values
   end
