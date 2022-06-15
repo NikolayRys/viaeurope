@@ -1,10 +1,13 @@
 class Bin
   SIZE = 2311
 
-  def initialize(content=[], size=SIZE)
+  def self.build(values, size=SIZE)
+    values.sum <= @size ? new(values, size) : nil
+  end
+
+  def initialize(values=[], size=SIZE)
     @size = size
-    raise "Not enough space" if content.sum > @size
-    @content = content
+    @content = values
   end
 
   def add(value)
