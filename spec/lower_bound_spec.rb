@@ -17,6 +17,8 @@ describe BestFitDecreasing do
                       11]
   test_data_table << [[51, 48, 40, 26, 26, 9],
                       2] # Different between BFD and BC
+  test_data_table << [[1262, 1227, 1049, 961, 945, 667, 650, 621, 567, 567, 564, 560, 536, 419, 312],
+                      5]
 
   test_data_table.each do|values, bins|
     it "distributes set of #{values.size} values into bins" do
