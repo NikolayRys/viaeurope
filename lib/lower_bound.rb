@@ -2,6 +2,8 @@
 # Paper: https://doc.lagout.org/science/0_Computer%20Science/2_Algorithms/Knapsack%20Problems_%20Algorithms%20and%20Computer%20Implementations%20%5BMartello%20%26%20Toth%201990-11%5D.pdf
 # Requires linear time.
 
+require_relative 'bin'
+
 class LowerBound
   def initialize(values, size=Bin::SIZE)
     @values = values.sort
