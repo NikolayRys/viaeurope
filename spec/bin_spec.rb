@@ -36,7 +36,7 @@ describe Bin do
     end
   end
 
-  describe '.build' do
+  describe 'factory' do
     it 'mass assigns values' do
       bin = Bin.build([1, 2, 3])
       expect(bin.total_values).to eq(3)
