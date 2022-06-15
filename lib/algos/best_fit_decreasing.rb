@@ -2,7 +2,7 @@
 # https://en.wikipedia.org/wiki/Best-fit_bin_packing
 # Requires nlog(n) time.
 
-require_relative 'bin'
+require_relative '../bin'
 
 class BestFitDecreasing
   def initialize(values, size=Bin::SIZE)
