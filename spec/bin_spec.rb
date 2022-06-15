@@ -3,7 +3,7 @@ require_relative '../lib/bin'
 
 describe Bin do
 
-  describe 'instance', focus: true do
+  describe 'instance' do
     let(:bin) { Bin.new }
     it 'is initialized with a default size' do
       expect(bin.free_space).to eq(Bin::SIZE)
