@@ -38,10 +38,9 @@ rspec
 The integer parameter means "time budget" and is used to specify time in seconds for attempting to improve the heuristic solution with the exhaustive search.
 
 ## What would you I do if I have more time?
-There can be many improvements that are likely to be out of the scope of the task.
 
-– Use more sophisticated heuristic to improve probability of success. First, there are other modern general-purpose algorithms as Modified First-Fit-Decreasing, that provides better guarantees than used BFD. Second, we likely can use statistical analysis of the real shipping data, to narrow down the problem domain.
-– Use more sophisticated exhaustive search algorithm - e.g. Branch-and-Bound or Bin-packing, that reduce the problem space compared to the brute-force.
-- Rework the exhaustive algorithm to use it's own stack instead of recursion.
-– Parallelize the search
-- Find a way to meaningfully control the budget for exhaustive search depending on the system load and input size.
+* Use more sophisticated heuristic to improve probability of success. First, there are other modern general-purpose algorithms as Modified First-Fit-Decreasing, that provide better guarantees than BFD. Second, we likely can use statistical analysis of the real shipping data, to narrow down the problem domain.
+* Use more sophisticated exhaustive search algorithm - e.g. Branch-and-Bound or Bin-packing, that reduce the problem space compared to the brute-force.
+* Rework the exhaustive algorithm to use it's own stack instead of recursion.
+* Parallelize the search
+* Find a way to meaningfully control the budget for exhaustive search depending on the system load and input size.
