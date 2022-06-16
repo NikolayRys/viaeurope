@@ -16,12 +16,32 @@ Attached you may find a sample input and output CSV files.
 
 
 ## My comments
-NP-complete optimization problem.input.csv
-output.csv
+The task is essentially a NP-complete optimization problem, so it cannot be solved optimally in most practical cases.
 
-Cannot be efficiently solved in most practical cases.
+From the engineering standpoint, I'm implemented a hybrid approach, that tries to quickly achieve reasonable results with heuristics, 
+and then if time is left, tries to find the optimal solution.
 
-1. Heuristic solution with n(log n) complexity: Refined first-fit algorithm.
-2. Exhaustive search with n^2 complexity: Branch and bound.
+There are many algorithms known in academical research that can used for both steps. Since this implementation is PoC, I've 
+went with the simplest ones, but there are more advanced ones available.
 
-## Most important files
+1. Best-fit-decreasing - a heuristic algo with O(n(log n)) complexity.
+2. Brute-force - an exhaustive search with O(n!) complexity that is guaranteed to find the optimal solution if sufficient time is given. I've also found an academical paper that allows to estimate required amount of bins for optimal solution, so I'm saving some time only iterating over the combinations for a particular number of bins.
+
+I'm using this hybrid strategy for the parcel processing script.
+
+## How to use the script
+```
+bundle install
+rspec
+./assign_shipments.rb input.csv output2.csv 3
+```
+The integer parameter means "time budget" and is used to specify time in seconds for attempting to improve the heuristic solution with the exhaustive search.
+
+## What would you I do if I have more time?
+There can be many improvements that are likely to be out of the scope of the task.
+
+– Use more sophisticated heuristic to improve probability of success. First, there are other modern general-purpose algorithms as Modified First-Fit-Decreasing, that provides better guarantees than used BFD. Second, we likely can use statistical analysis of the real shipping data, to narrow down the problem domain.
+– Use more sophisticated exhaustive search algorithm - e.g. Branch-and-Bound or Bin-packing, that reduce the problem space compared to the brute-force.
+- Rework the exhaustive algorithm to use it's own stack instead of recursion.
+– Parallelize the search
+- Find a way to meaningfully control the budget for exhaustive search depending on the system load and input size.
