@@ -26,12 +26,12 @@ describe BruteForce do
 
   test_data_table.each do|values, bins, size|
     it "distributes set of #{values.size} values into bins of #{size}" do
-      expect(BruteForce.new(values, bins.size, size).distribute!).to eq(bins)
+      expect(BruteForce.new(values, bins.size, 5, size).distribute!).to eq(bins)
     end
   end
 
   it 'stops if time limit is reached' do
     values = [100, 98, 96, 93, 91, 87, 81, 59, 58, 55, 50, 43, 22, 21, 20, 15, 14, 10, 8, 6, 5, 4, 3, 1, 0]
-    expect{BruteForce.new(values, 11, 100, 1).distribute!}.to raise_error('No more time budget')
+    expect{BruteForce.new(values, 11, 1, 100).distribute!}.to raise_error(TimeoutError, 'Time limit reached')
   end
 end
