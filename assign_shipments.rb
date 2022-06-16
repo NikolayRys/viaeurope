@@ -1,8 +1,8 @@
 #!/usr/bin/env ruby
 require_relative 'lib/file_processor'
+require_relative 'lib/lower_bound'
 require_relative 'lib/algos/best_fit_decreasing'
 require_relative 'lib/algos/brute_force'
-require_relative 'lib/lower_bound'
 
 time_budget = ARGV[2].to_i || 3
 fp = FileProcessor.new(ARGV[0] || 'input.csv')
