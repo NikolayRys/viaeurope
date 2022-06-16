@@ -22,7 +22,7 @@ describe Bin do
 
     it 'raises an error when trying to remove a value that is not in the bin' do
       bin.add(1)
-      expect { bin.remove(2) }.to raise_error('Item not found')
+      expect { bin.remove(2) }.to raise_error(ArgumentError, 'Item not found')
     end
 
     it 'displayes the total number of values' do

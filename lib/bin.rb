@@ -12,13 +12,13 @@ class Bin
   end
 
   def add(value)
-    raise 'Not enough space' if free_space < value
+    raise ArgumentError, 'Not enough space' if free_space < value
     @content << value
     recalculate_free_space
   end
 
   def remove(value)
-    raise 'Item not found' unless (position = @content.index(value))
+    raise ArgumentError, 'Item not found' unless (position = @content.index(value))
     @content.delete_at(position)
     recalculate_free_space
   end
