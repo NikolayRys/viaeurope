@@ -32,6 +32,6 @@ describe BruteForce do
 
   it 'stops if time limit is reached' do
     values = [100, 98, 96, 93, 91, 87, 81, 59, 58, 55, 50, 43, 22, 21, 20, 15, 14, 10, 8, 6, 5, 4, 3, 1, 0]
-    expect{BruteForce.new(values, 11, 1, 100).distribute!}.to raise_error(TimeoutError, 'Time limit reached')
+    expect{BruteForce.new(values, 11, 1, 100).distribute!}.to raise_error(Timeout::Error, 'Time limit reached')
   end
 end
