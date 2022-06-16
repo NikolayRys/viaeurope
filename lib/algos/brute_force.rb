@@ -18,7 +18,7 @@ class BruteForce
   private
 
   def distribute_recursively(all_values, bins)
-    raise Timeout::Error, 'Time limit reached' if Time.now - @start_time > @budget
+    raise RuntimeError, 'Time limit reached' if Time.now - @start_time > @budget
     return [] if all_values.empty?
 
     core_bin_variants = build_bin_enumerator(all_values, bins)
